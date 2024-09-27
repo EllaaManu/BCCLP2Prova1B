@@ -6,14 +6,33 @@ import { useState } from "react";
 import {listaCandidatos} from "../../dados/candidatos";
 export default function TelaPrincipal(props) {
     const [detalharCandidato, setDetalharCandidato]=useState(false)
+    const [candidatoSelecionado, setCandidatoSelecionado]=useState({
+        id: 1,
+        email: "",
+        nome: "",
+        avatar: "",
+        propostas:[],
+        curtidas:0,
+        descurtidas:0,
+        questionamentos:[]
+    })
     return (
 
         <Pagina>
             {
                 detalharCandidato ? (
-                    <DetalhesCandidato />
+                    <DetalhesCandidato 
+                        setDetalharCandidato = {setDetalharCandidato}
+                        listaCandidatos={listaCandidatos}
+                        candidatoAtual = {candidatoSelecionado}
+                        setCandidatoSelecionado = {setCandidatoSelecionado}
+                    />
                 ) : (
-                    <GridCandidatos listaCandidatos={listaCandidatos} />
+                    <GridCandidatos 
+                        listaCandidatos={listaCandidatos} 
+                        setDetalharCandidato = {setDetalharCandidato}
+                        setCandidatoSelecionado = {setCandidatoSelecionado}
+                    />
                 )
             }
         </Pagina>
