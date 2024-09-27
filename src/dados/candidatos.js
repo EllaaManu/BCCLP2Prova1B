@@ -121,3 +121,4 @@ export const listaCandidatos = [
         "questionamentos":[]    
     }
 ];
+export default listaCandidatos
