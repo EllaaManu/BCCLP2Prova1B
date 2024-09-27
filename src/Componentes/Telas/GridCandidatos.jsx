@@ -3,9 +3,9 @@ import Candidato from "./elementos/Candidato";
 import candidatos from "../../dados/candidatos.js"
 export default function GridCandidatos(props) {
 
-    const [listaCandidatos, setListaCandidatos] = useState(candidatos);
     
-    if (listaCandidatos) {
+    
+    if (props?.listaCandidatos) {
         return (
             <div style={{
                 width: '100%',
@@ -16,12 +16,12 @@ export default function GridCandidatos(props) {
                 padding: '10px',
                 gap: '20px'
             }}>
-                {listaCandidatos.map((candidato) => (
+                {props.listaCandidatos.map((candidato) => (
                     <Candidato 
-                        key={candidato.id}
-                        candidato={candidato}
-                        listaCandidatos={listaCandidatos}
-                        setListaCandidatos={setListaCandidatos}
+                        key={candidato.id} 
+                        candidato={candidato} 
+                        setDetalharCandidato = {props.setDetalharCandidato}
+                        setCandidatoSelecionado={props.setCandidatoSelecionado}
                     />
                 ))}
             </div>
